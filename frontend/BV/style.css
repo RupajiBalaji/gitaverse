@@ -76,9 +76,9 @@ body {
 .scroll-container {
     position: relative;
     z-index: 10; /* Above Chakra and Dust */
-    width: min(750px, 95vw);
-    height: min(950px, 92vh);
-    aspect-ratio: 3/4; /* Maintain scroll shape */
+    width: min(900px, 95vw);
+    height: min(1000px, 95vh);
+     
     background-image: url('scroll.png'); /* Ensure this image exists */
     background-size: 100% 100%; /* Stretch to fit container */
     background-position: center;
@@ -91,16 +91,15 @@ body {
 }
 
 .scroll-content {
-    width: 65%;
-    height: 70%; /* Confine content to the safe area of the scroll */
+    position: absolute;
+    top: 30%;              /* 👈 THIS controls vertical position */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center; /* Center vertically within the paper */
-    text-align: center;
-    padding: 1rem;
-    gap: 0.5rem;
-    margin-top: 8rem;
+    gap: 1rem;
 }
 
 /* 4. Transparent Form */
@@ -178,14 +177,16 @@ button:disabled {
 }
 
 #outputText {
-    margin-top: 4px;
-    margin-bottom: 4px;
+    margin-top: 10px;
+    margin-bottom: 10px;
     font-family: var(--font-body);
-    font-size: 0.9rem;
-    line-height: 1.6;
-    font-weight: 600;
+    font-size: 1rem;
+    line-height: 1.7;
+    font-weight: 700;
+    color: #2c1b18;   /* Deep brown ink */
     min-height: 3em;
-    text-shadow: 0 1px 1px rgba(255,255,255,0.5);
+    text-align: center;
+    word-wrap: break-word;
 }
 
 /* Typewriter Cursor */
@@ -222,4 +223,21 @@ button:disabled {
     height: 100%;
     pointer-events: none; /* Allow clicks to pass through to the form */
     z-index: 1; /* Background layer: Above Chakra (z-1) but behind Scroll (z-10) */
+}
+.back-btn {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  text-decoration: none;
+  background: #D4AF37;
+  color: black;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-weight: 600;
+  z-index: 999;
+  transition: 0.3s;
+}
+
+.back-btn:hover {
+  background: #b9972e;
 }
