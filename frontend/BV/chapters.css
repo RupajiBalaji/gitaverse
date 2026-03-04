@@ -23,57 +23,18 @@ body {
 }
 
 /* Ensure navbar works on dark background */
-/* ===== NAVBAR ===== */
-.navbar {
-  position: fixed;
-  width: 100%;
-  top: 0;
-  z-index: 1000;
-  background: transparent;
-  transition: 0.3s ease;
-}
-
-.navbar.scrolled {
-  background: white;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-}
-
-.nav-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 70px;
-}
-
-.logo {
-  font-family: 'Playfair Display', serif;
-  font-size: 22px;
-  color: #D4AF37;
-  font-weight: 700;
-}
-
-.right-section {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-}
-
 .navbar nav a {
-  text-decoration: none;
-  color: white;
-  font-weight: 500;
-  margin-right: 15px;
-  transition: 0.3s;
+    color: rgba(255, 255, 255, 0.8) !important;
 }
 
 .navbar.scrolled nav a {
-  color: #8B5E3C;
+    color: #8B5E3C !important;
 }
 
-.navbar nav a:hover {
-  color: #D4AF37;
+.navbar nav a:hover,
+.navbar nav a.active {
+    color: #D4AF37 !important;
 }
-
 
 /* Chakra Background */
 .chakra-layer {
@@ -246,17 +207,17 @@ body {
   padding: 8px 20px;
   border-radius: 30px;
   background: transparent;
-  color: #00bfff;
+  color: #D4AF37;
   font-weight: 500;
   cursor: pointer;
-  border: 2px solid #00bfff;
+  border: 2px solid #e8bb28;
   transition: 0.3s ease;
 }
 
 .outline-btn:hover {
-  background: #00bfff;
+  background: #D4AF37;
   color: black;
-  box-shadow: 0 0 15px #00bfff;
+  box-shadow: 0 0 15px #e8bb28;
 }
 
 /* Gradient Glow Button */
@@ -264,17 +225,17 @@ body {
   padding: 8px 22px;
   border-radius: 30px;
   border: none;
-  background: linear-gradient(45deg, #00bfff, #1e90ff);
+  background: linear-gradient(45deg, #e8bb28, #D4AF37);
   color: white;
   font-weight: 600;
   cursor: pointer;
   transition: 0.3s ease;
-  box-shadow: 0 0 10px rgba(0,191,255,0.6);
+  box-shadow: 0 0 10px #D4AF37;
 }
 
 .glow-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 0 20px rgba(0,191,255,0.9);
+  box-shadow: 0 0 20px #D4AF37;
 }
 
 /* Main Content */
