@@ -231,6 +231,67 @@ body {
   color: #D4AF37;
 }
 
+/* Hamburger Menu */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 30px;
+  height: 30px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 1001;
+}
+
+.hamburger span {
+  width: 30px;
+  height: 3px;
+  background: #FFD700;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+  transform-origin: center;
+}
+
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -6px);
+}
+
+/* Mobile Menu */
+.nav-menu.active {
+  position: fixed;
+  top: 70px;
+  left: 0;
+  right: 0;
+  background: rgba(10, 10, 20, 0.95);
+  backdrop-filter: blur(10px);
+  flex-direction: column;
+  padding: 20px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.nav-menu.active a {
+  color: #FFD700 !important;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.nav-menu.active a:hover {
+  color: #FFFF00 !important;
+  text-shadow: 0 0 8px rgba(255, 255, 0, 0.8);
+}
+
 /* ===== PREMIUM BUTTONS ===== */
 
 /* Wireshark Style Outline Button */
@@ -478,6 +539,14 @@ body {
         justify-content: center;
     }
 
+    .navbar nav {
+        display: none;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
     .chapters-container {
         grid-template-columns: 1fr;
         padding: 1rem;
@@ -496,6 +565,14 @@ body {
 
     .chapter-name {
         font-size: 1.2rem;
+    }
+
+    .chapters-title {
+        font-size: clamp(2rem, 8vw, 3rem);
+    }
+
+    .chapters-subtitle {
+        font-size: clamp(0.9rem, 4vw, 1.2rem);
     }
 }
 

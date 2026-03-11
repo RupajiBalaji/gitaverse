@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Generate a divine message
         let data = null;
         try {
-                // const response = await fetch("http://127.0.0.1:8000/get-meaning", {
+                 //const response = await fetch("http://127.0.0.1:8000/get-meaning", {
                 const response = await fetch("https://gitaversebackend.onrender.com/get-meaning", {
                 method: "POST",
                 headers: {

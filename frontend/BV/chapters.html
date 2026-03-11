@@ -22,13 +22,18 @@
         <div class="container nav-content">
             <div class="logo">Bhagavad Gītā</div>
             <div class="right-section">
-                <nav>
+                <nav class="nav-menu">
                     <a href="../DASHBOARD/index.html">Home</a>
                     <a href="../DASHBOARD/index.html#about">About</a>
                     <a href="chapters.html" class="active">Chapters</a>
                     <a href="../DASHBOARD/index.html#team">TeamXplore</a>
                     <a href="../DASHBOARD/index.html#contact">Contact</a>
                 </nav>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
                 <a href="../BV/translation.html" class="glow-btn">Translate</a>
                 
             </div>
@@ -48,6 +53,36 @@
     </main>
 
     <script src="chapters.js"></script>
+
+    <script>
+    // Hamburger menu toggle
+    document.addEventListener('DOMContentLoaded', function() {
+      const hamburger = document.querySelector('.hamburger');
+      const navMenu = document.querySelector('.nav-menu');
+
+      hamburger.addEventListener('click', function() {
+        hamburger.classList.toggle('active');
+        navMenu.classList.toggle('active');
+      });
+
+      // Close menu when clicking a link
+      const navLinks = document.querySelectorAll('.nav-menu a');
+      navLinks.forEach(link => {
+        link.addEventListener('click', function() {
+          hamburger.classList.remove('active');
+          navMenu.classList.remove('active');
+        });
+      });
+
+      // Close menu when clicking outside
+      document.addEventListener('click', function(event) {
+        if (!hamburger.contains(event.target) && !navMenu.contains(event.target)) {
+          hamburger.classList.remove('active');
+          navMenu.classList.remove('active');
+        }
+      });
+    });
+    </script>
 
 </body>
 </html>

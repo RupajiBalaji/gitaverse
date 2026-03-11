@@ -146,6 +146,67 @@
             border-color: #D4AF37 !important;
         }
 
+        /* Hamburger Menu */
+        .hamburger {
+          display: none;
+          flex-direction: column;
+          justify-content: space-around;
+          width: 30px;
+          height: 30px;
+          background: transparent;
+          border: none;
+          cursor: pointer;
+          padding: 0;
+          z-index: 1001;
+        }
+
+        .hamburger span {
+          width: 30px;
+          height: 3px;
+          background: #FFD700;
+          border-radius: 2px;
+          transition: all 0.3s ease;
+          transform-origin: center;
+        }
+
+        .hamburger.active span:nth-child(1) {
+          transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+          opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+          transform: rotate(-45deg) translate(7px, -6px);
+        }
+
+        /* Mobile Menu */
+        .nav-menu.active {
+          position: fixed;
+          top: 70px;
+          left: 0;
+          right: 0;
+          background: rgba(10, 10, 20, 0.95);
+          backdrop-filter: blur(10px);
+          flex-direction: column;
+          padding: 20px;
+          box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+          z-index: 1000;
+        }
+
+        .nav-menu.active a {
+          color: #FFD700 !important;
+          padding: 10px 0;
+          border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+          text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .nav-menu.active a:hover {
+          color: #FFFF00 !important;
+          text-shadow: 0 0 8px rgba(255, 255, 0, 0.8);
+        }
+
         /* Chapter Hero Section */
         .chapter-hero {
             position: relative;
@@ -579,6 +640,14 @@
 
         /* Responsive Design */
         @media (max-width: 768px) {
+            .navbar nav {
+                display: none;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
             .chapter-hero {
                 min-height: 50vh;
             }
@@ -611,13 +680,20 @@
 
             .verse-content {
                 font-size: 1rem;
+                line-height: 1.6;
             }
 
             .translation-text {
                 font-size: 0.9rem;
+                line-height: 1.6;
+            }
+
+            .intro-content h2 {
+                font-size: 2rem;
             }
 
             .intro-content p {
+                font-size: 1rem;
                 text-align: left;
             }
 
@@ -661,13 +737,18 @@
         <div class="container nav-content">
             <div class="logo">Bhagavad Gītā</div>
             <div class="right-section">
-                <nav>
+                <nav class="nav-menu">
                 <a href="../DASHBOARD/index.html">Home</a>
                     <a href="../DASHBOARD/index.html#about">About</a>
                     <a href="chapters.html">Chapters</a>
                     <a href="../DASHBOARD/index.html#team">TeamXplore</a>
                     <a href="../DASHBOARD/index.html#contact">Contact</a>
                 </nav>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
                 <a href="../BV/translation.html" class="glow-btn">Translate</a>
                 
             </div>
@@ -1267,6 +1348,34 @@
             } else {
                 nav.classList.remove("scrolled");
             }
+        });
+
+        // Hamburger menu toggle
+        document.addEventListener('DOMContentLoaded', function() {
+          const hamburger = document.querySelector('.hamburger');
+          const navMenu = document.querySelector('.nav-menu');
+
+          hamburger.addEventListener('click', function() {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+          });
+
+          // Close menu when clicking a link
+          const navLinks = document.querySelectorAll('.nav-menu a');
+          navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+              hamburger.classList.remove('active');
+              navMenu.classList.remove('active');
+            });
+          });
+
+          // Close menu when clicking outside
+          document.addEventListener('click', function(event) {
+            if (!hamburger.contains(event.target) && !navMenu.contains(event.target)) {
+              hamburger.classList.remove('active');
+              navMenu.classList.remove('active');
+            }
+          });
         });
     </script>
 </body>
