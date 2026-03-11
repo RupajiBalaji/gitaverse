@@ -48,8 +48,8 @@ function navigateToChapter(chapterNumber) {
 
     const url = `chapter.html?chapter=${chapterNumber}`;
 
-    // open in new tab
-    window.open(url, "_blank");
+    // open in same tab
+    window.location.href = url;
 
 }
 
