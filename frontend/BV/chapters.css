@@ -527,17 +527,18 @@ body {
 }
 
 /* Responsive Design */
-@media (max-width: 768px) {
-    .nav-container {
-        flex-direction: column;
-        gap: 1rem;
-        padding: 1rem;
+@media (max-width: 575px) {
+    /* Mobile (extra small) */
+    .container {
+        padding: 0 15px;
     }
 
-    .nav-links {
-        gap: 1rem;
-        flex-wrap: wrap;
-        justify-content: center;
+    .nav-content {
+        height: 60px;
+    }
+
+    .logo {
+        font-size: 18px;
     }
 
     .navbar nav {
@@ -548,48 +549,319 @@ body {
         display: flex;
     }
 
+    .glow-btn {
+        padding: 6px 14px;
+        font-size: 0.85rem;
+    }
+
+    .chapters-main {
+        padding-top: 70px;
+    }
+
+    .chapters-hero {
+        padding: 2rem 1rem 1.5rem;
+    }
+
+    .chapters-title {
+        font-size: clamp(1.8rem, 6vw, 2.5rem);
+        margin-bottom: 0.75rem;
+        letter-spacing: 2px;
+    }
+
+    .chapters-subtitle {
+        font-size: clamp(0.85rem, 3vw, 1rem);
+        letter-spacing: 1px;
+    }
+
     .chapters-container {
         grid-template-columns: 1fr;
         padding: 1rem;
+        gap: 1rem;
+        max-width: 100%;
+        margin: 0;
+    }
+
+    .chapter-card {
+        padding: 1.25rem;
+        border-radius: 8px;
+        min-height: auto;
+        cursor: pointer;
+        /* Better touch target with slight increase */
+        padding: 1.5rem 1.25rem;
+    }
+
+    .chapter-card:hover {
+        transform: translateY(-8px) scale(1.01);
+    }
+
+    .chapter-number {
+        font-size: 2rem;
+        top: 0.5rem;
+        right: 0.75rem;
+        opacity: 0.25;
+    }
+
+    .chapter-card:hover .chapter-number {
+        font-size: 2.2rem;
+    }
+
+    .chapter-header {
+        margin-bottom: 0.75rem;
+    }
+
+    .chapter-name {
+        font-size: 1.1rem;
+        margin-bottom: 0.3rem;
+    }
+
+    .chapter-sanskrit {
+        font-size: 0.85rem;
+        margin-bottom: 0.2rem;
+    }
+
+    .chapter-verses {
+        font-size: 0.8rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .chapter-description {
+        font-size: 0.9rem;
+        margin-top: 0.75rem;
+        padding-top: 0.75rem;
+    }
+
+    /* Hide chakra animation on mobile for better performance */
+    .chakra-layer {
+        opacity: 0.3 !important;
+        animation: none !important;
+    }
+
+    .chakra-layer::before {
+        animation: none !important;
+        opacity: 0;
+    }
+
+    /* Disable divine cursor on touch devices */
+    .divine-cursor {
+        display: none;
+    }
+
+    /* Nav menu mobile adjustments */
+    .nav-menu {
+        position: fixed;
+        top: 60px;
+        left: 0;
+        right: 0;
+        height: calc(100vh - 60px);
+        background: rgba(10, 10, 20, 0.98);
+        flex-direction: column;
+        padding: 1.5rem 1rem;
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+        overflow-y: auto;
+        z-index: 999;
+        gap: 0;
+    }
+
+    .nav-menu.active {
+        transform: translateX(0);
+        display: flex;
+    }
+
+    .nav-menu.active a {
+        width: 100%;
+        padding: 0.85rem 0;
+        text-align: center;
+        border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+        color: #FFD700 !important;
+        font-size: 1rem;
+    }
+
+    .nav-menu.active a:hover {
+        background: rgba(212, 175, 55, 0.1);
+        color: #FFFF00 !important;
+    }
+}
+
+@media (min-width: 576px) and (max-width: 767px) {
+    /* Small devices (landscape mobile) */
+    .nav-content {
+        height: 65px;
+    }
+
+    .logo {
+        font-size: 20px;
+    }
+
+    .navbar nav a {
+        font-size: 0.9rem;
+        margin-right: 10px;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    .chapters-title {
+        font-size: clamp(2rem, 6vw, 2.8rem);
+    }
+
+    .chapters-subtitle {
+        font-size: clamp(0.95rem, 3vw, 1.2rem);
+    }
+
+    .chapters-container {
+        grid-template-columns: 1fr;
         gap: 1.5rem;
+        padding: 1.5rem;
     }
 
     .chapter-card {
         padding: 1.5rem;
     }
 
-    .chapter-number {
-        font-size: 2.5rem;
-        top: 0.5rem;
-        right: 1rem;
-    }
-
     .chapter-name {
-        font-size: 1.2rem;
+        font-size: 1.15rem;
     }
 
-    .chapters-title {
-        font-size: clamp(2rem, 8vw, 3rem);
-    }
-
-    .chapters-subtitle {
-        font-size: clamp(0.9rem, 4vw, 1.2rem);
+    .chapter-number {
+        font-size: 2.3rem;
     }
 }
 
-@media (min-width: 769px) and (max-width: 1024px) {
+@media (min-width: 768px) and (max-width: 1024px) {
+    /* Tablets */
     .chapters-container {
         grid-template-columns: repeat(2, 1fr);
+        gap: 1.75rem;
+    }
+
+    .chapters-title {
+        font-size: 3.2rem;
+    }
+
+    .chapter-card {
+        padding: 1.75rem;
+    }
+
+    .chapter-number {
+        font-size: 2.8rem;
+    }
+
+    .chapter-name {
+        font-size: 1.3rem;
     }
 }
 
 @media (min-width: 1025px) {
+    /* Desktops and larger */
     .chapters-container {
         grid-template-columns: repeat(3, 1fr);
+    }
+
+    .chapter-card:hover {
+        transform: translateY(-10px) scale(1.02);
+    }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+    /* Disable hover animations on touch devices */
+    .chapter-card:hover {
+        transform: none;
+        border-color: var(--gold);
+    }
+
+    .chapter-card:hover .chapter-number {
+        opacity: 0.5;
+        transform: none;
+    }
+
+    .chapter-card:active {
+        transform: scale(0.98);
+    }
+
+    /* Make touch targets bigger */
+    .chapter-card {
+        padding: 1.75rem;
+    }
+
+    /* Disable custom cursor on touch */
+    .divine-cursor {
+        display: none;
+    }
+}
+
+/* Orientation changes */
+@media (orientation: landscape) and (max-height: 700px) {
+    .chapters-hero {
+        padding: 1.5rem;
+    }
+
+    .chapters-title {
+        margin-bottom: 0.5rem;
+    }
+
+    .chapters-subtitle {
+        margin-bottom: 0;
+    }
+
+    .chapters-container {
+        gap: 1rem;
+        padding: 1rem;
+    }
+}
+
+/* High DPI screens */
+@media (min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .hamburger span,
+    .chapter-card {
+        border-width: 1px;
+    }
+}
+
+/* Prevent layout shift on mobile */
+@media (max-width: 768px) {
+    html {
+        overflow-x: hidden;
+    }
+
+    body {
+        overflow-x: hidden;
+    }
+}
+
+/* Dark mode support (future-proofing) */
+@media (prefers-color-scheme: dark) {
+    .chapter-card {
+        background: rgba(44, 27, 24, 0.08);
+    }
+}
+
+/* Reduced motion support for accessibility */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
+
+    .chapter-card {
+        animation: none !important;
+        opacity: 1;
+        transform: none !important;
     }
 }
 
 /* Chakra interaction on hover */
 body:has(.chapter-card:hover) .chakra-layer {
     animation-duration: 80s !important;
+}
+
+/* Print styles */
+@media print {
+    .navbar,
+    .divine-cursor,
+    #dustCanvas {
+        display: none;
+    }
 }

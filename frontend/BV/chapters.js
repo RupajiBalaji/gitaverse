@@ -100,23 +100,34 @@ document.addEventListener('mouseup', () => {
     cursor.classList.remove('click');
 });
 
-// Particle effect (dust canvas) - Optimized
+// Particle effect (dust canvas) - Optimized for mobile
 const canvas = document.getElementById('dustCanvas');
 const ctx = canvas.getContext('2d', { alpha: true });
 
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
+// Optimized particle count based on device
+let particleCount;
+if (window.innerWidth < 480) {
+    particleCount = 25; // Very small mobile
+} else if (window.innerWidth < 768) {
+    particleCount = 40; // Small mobile
+} else if (window.innerWidth < 1024) {
+    particleCount = 60; // Tablet
+} else {
+    particleCount = 80; // Desktop
+}
+
 const particles = [];
-const particleCount = window.innerWidth < 768 ? 50 : 80; // Reduced from 100
 
 class Particle {
     constructor() {
         this.x = Math.random() * canvas.width;
         this.y = Math.random() * canvas.height;
         this.size = Math.random() * 2 + 0.5;
-        this.speedX = Math.random() * 0.5 - 0.25;
-        this.speedY = Math.random() * 0.5 - 0.25;
+        this.speedX = (Math.random() * 0.5 - 0.25) * 0.8; // Slower movement
+        this.speedY = (Math.random() * 0.5 - 0.25) * 0.8;
         this.opacity = Math.random() * 0.5 + 0.2;
     }
 
@@ -139,18 +150,27 @@ class Particle {
 }
 
 function initParticles() {
+    particles.length = 0; // Clear existing particles
     for (let i = 0; i < particleCount; i++) {
         particles.push(new Particle());
     }
 }
 
 let animationId;
+let frameCount = 0;
+
 function animateParticles() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    
-    for (let i = 0; i < particles.length; i++) {
-        particles[i].update();
-        particles[i].draw();
+    // Reduce updates on mobile for better performance
+    const skipFrames = window.innerWidth < 768 ? 2 : 1;
+    frameCount++;
+
+    if (frameCount % skipFrames === 0) {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        for (let i = 0; i < particles.length; i++) {
+            particles[i].update();
+            particles[i].draw();
+        }
     }
 
     animationId = requestAnimationFrame(animateParticles);
@@ -161,12 +181,28 @@ let resizeTimeout;
 window.addEventListener('resize', () => {
     clearTimeout(resizeTimeout);
     resizeTimeout = setTimeout(() => {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-    }, 150);
-});
+        const newWidth = window.innerWidth;
+        const newHeight = window.innerHeight;
+        
+        canvas.width = newWidth;
+        canvas.height = newHeight;
 
-// Pause when tab is hidden
+        // Recalculate particle count on resize
+        if (newWidth < 480) {
+            particleCount = 25;
+        } else if (newWidth < 768) {
+            particleCount = 40;
+        } else if (newWidth < 1024) {
+            particleCount = 60;
+        } else {
+            particleCount = 80;
+        }
+        
+        initParticles();
+    }, 150);
+}, { passive: true });
+
+// Pause when tab is hidden to save battery
 document.addEventListener('visibilitychange', () => {
     if (document.hidden) {
         cancelAnimationFrame(animationId);
@@ -175,9 +211,17 @@ document.addEventListener('visibilitychange', () => {
     }
 });
 
+// Detect reduced motion preference
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if (prefersReducedMotion) {
+    canvas.style.display = 'none'; // Disable animation canvas entirely
+}
+
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
     generateChapterCards();
-    initParticles();
-    animateParticles();
+    if (!prefersReducedMotion) {
+        initParticles();
+        animateParticles();
+    }
 });
