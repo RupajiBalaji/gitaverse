@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bhagavad Gita Chapter 1: Arjuna's Vishada Yoga</title>
     
-    <link rel="stylesheet" href="../DASHBOARD/style.css">
-    <link rel="stylesheet" href="../../DASHBOARD/hamburger-menu.css">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/hamburger-menu.css">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=MedievalSharp&family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     
     <style>
@@ -663,13 +663,13 @@
             <div class="logo">Bhagavad Gītā</div>
             <div class="right-section">
                 <nav>
-                <a href="../DASHBOARD/index.html">Home</a>
-                    <a href="../DASHBOARD/index.html#about">About</a>
-                    <a href="chapters.html">Chapters</a>
-                    <a href="../DASHBOARD/index.html#team">TeamXplore</a>
-                    <a href="../DASHBOARD/index.html#contact">Contact</a>
+                <a href="/index.html">Home</a>
+                    <a href="/index.html#about">About</a>
+                    <a href="/BV/chapters.html">Chapters</a>
+                    <a href="/index.html#team">TeamXplore</a>
+                    <a href="/index.html#contact">Contact</a>
                 </nav>
-                <a href="../BV/translation.html" class="glow-btn">Translate</a>
+                <a href="/BV/translation.html" class="glow-btn">Translate</a>
                 
             </div>
         </div>
@@ -682,7 +682,7 @@
         </div>
         <div class="container">
             <div class="breadcrumb">
-                <a href="chapters.html">Chapters</a> > <span>Chapter 1</span>
+                <a href="/BV/chapters.html">Chapters</a> > <span>Chapter 1</span>
             </div>
             <div class="hero-content">
                 <h1 class="chapter-title">
@@ -815,8 +815,8 @@
             
             if (heroBackground && backgroundImage) {
                 // Set background image with fallback gradient
-                heroBackground.style.backgroundImage = `url('images/${backgroundImage}'), linear-gradient(135deg, var(--gold) 0%, #b8941f 50%, #8b6914 100%)`;
-                console.log(`Set background image: images/${backgroundImage}`);
+                heroBackground.style.backgroundImage = `url('/BV/images/${backgroundImage}'), linear-gradient(135deg, var(--gold) 0%, #b8941f 50%, #8b6914 100%)`;
+                console.log(`Set background image: /BV/images/${backgroundImage}`);
             } else {
                 console.log('Using default gradient background');
             }
@@ -830,7 +830,8 @@
             try {
                 // Try different possible paths
                 const possiblePaths = [
-                `../../BhagavatGitaJsonFiles/${chapterFile}`
+                `/BV/BhagavatGitaJsonFiles/${chapterFile}`,
+                `/BhagavatGitaJsonFiles/${chapterFile}`
                 ];
                 
 
@@ -922,7 +923,7 @@
                                 <a 
                                     class="translate-btn"
                                     target="_blank"
-                                    href="../BV/translation.html?text=${encodeURIComponent(verse.sanskrit.text)}">
+                                    href="/BV/translation.html?text=${encodeURIComponent(verse.sanskrit.text)}">
                                     Translate More !!!
                                 </a>
                             </div>
@@ -1270,6 +1271,6 @@
             }
         });
     </script>
-    <script src="../../DASHBOARD/hamburger-menu.js"></script>
+    <script src="/hamburger-menu.js"></script>
 </body>
 </html>
