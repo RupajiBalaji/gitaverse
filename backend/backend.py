@@ -1,6 +1,5 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import FileResponse
 from pydantic import BaseModel
 
 from mtranslate import translate
@@ -8,13 +7,14 @@ import json
 import os
 import re
 import unicodedata
-import uuid
 import difflib
 
 # ---------------- CONFIG ----------------
 
-DATA_DIR = "BhagavatGitaJsonFiles"
-AUDIO_DIR = "audio"
+# use directory relative to this file so imports work regardless of current working directory
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+DATA_DIR = os.path.join(BASE_DIR, "BhagavatGitaJsonFiles")
+AUDIO_DIR = os.path.join(BASE_DIR, "audio")
 
 LANG_CODES = {
     "afrikaans": "af",

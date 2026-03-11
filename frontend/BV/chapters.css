@@ -15,7 +15,8 @@
 /* Override some dashboard styles for chapters page */
 body {
     background-color: #050510;
-    background-image: url('../BV/milky-way-full-stars-space.jpg');
+    /* assets next to stylesheet */
+    background-image: url('milky-way-full-stars-space.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -74,7 +75,7 @@ body {
     left: 50%;
     width: 120vmin;
     height: 120vmin;
-    background: url('../BV/chakra.png') center/contain no-repeat;
+    background: url('chakra.png') center/contain no-repeat;
     transform: translate(-50%, -50%);
     pointer-events: none;
     z-index: 1;
