@@ -316,6 +316,7 @@ body {
     right: -100%;
     height: 100vh;
     width: 260px;
+    display:flex;
     background: white;
     flex-direction: column;
     justify-content: center;
