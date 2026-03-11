@@ -90,6 +90,67 @@ body {
   transform: scale(1.05);
 }
 
+/* Hamburger Menu */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 30px;
+  height: 30px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 1001;
+}
+
+.hamburger span {
+  width: 30px;
+  height: 3px;
+  background: #FFD700;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+  transform-origin: center;
+}
+
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -6px);
+}
+
+/* Mobile Menu */
+.nav-menu.active {
+  position: fixed;
+  top: 70px;
+  left: 0;
+  right: 0;
+  background: rgba(10, 10, 20, 0.95);
+  backdrop-filter: blur(10px);
+  flex-direction: column;
+  padding: 20px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.nav-menu.active a {
+  color: #FFD700 !important;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.nav-menu.active a:hover {
+  color: #FFFF00 !important;
+  text-shadow: 0 0 8px rgba(255, 255, 0, 0.8);
+}
+
 .navbar.scrolled nav a:hover {
   color: #D4AF37;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
@@ -301,4 +362,61 @@ button:disabled {
 
 .back-btn:hover {
   background: #b9972e;
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 768px) {
+    .navbar nav {
+        display: none;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    .scroll-container {
+        width: 95vw;
+        height: 90vh;
+    }
+
+    .scroll-content {
+        top: 25%;
+        width: 85%;
+        gap: 0.8rem;
+    }
+
+    .form-card {
+        gap: 10px;
+        align-items: center;
+    }
+
+    input, select {
+        width: 95%;
+        padding: 6px;
+        font-size: 0.85rem;
+    }
+
+    button {
+        margin-top: 8px;
+        margin-bottom: 2px;
+        padding: 10px 20px;
+        font-size: 0.8rem;
+    }
+
+    .output-section {
+        margin-top: 4px;
+    }
+
+    #outputText {
+        margin-top: 8px;
+        margin-bottom: 8px;
+        font-size: 0.9rem;
+        min-height: 2em;
+    }
+
+    .audio-btn {
+        margin-top: 4px;
+        font-size: 0.85rem;
+        padding: 6px 14px;
+    }
 }

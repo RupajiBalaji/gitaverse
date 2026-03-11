@@ -18,18 +18,21 @@
   <div class="container nav-content">
 
     <div class="logo">Bhagavad Gītā</div>
-
-    <div class="right-section">
+      <!-- Hamburger Icon -->
+    <div class="hamburger" id="hamburger">
+      <i class="fas fa-bars"></i>
+    </div>
+    <div class="right-section" id = "nav-menu">
 
       <nav>
         <a href="#home">Home</a>
         <a href="#about">About</a>
         <a href="#team">TeamXplore</a>
         <a href="#contact">Contact</a>
-        <a href="/BV/chapters.html">Chapters</a>
+        <a href="BV/chapters.html">Chapters</a>
       </nav>
 
-      <a href="/BV/translation.html" class="glow-btn">Translate</a>
+      <a href="BV/translation.html" class="glow-btn">Translate</a>
 
     </div>
   </div>
@@ -100,6 +103,7 @@
         <h3>Arjuna's Dilemma</h3>
         <p>On the battlefield, Arjuna faces a moral crisis about fighting his own kin, leading to the discourse of the Bhagavad Gita.</p>
       </div>
+
   </div>
 </section>
 
@@ -225,6 +229,17 @@ window.addEventListener("scroll", function() {
   } else {
     nav.classList.remove("scrolled");
   }
+});
+
+// hamburger (mobile) toggle
+document.addEventListener('DOMContentLoaded', () => {
+    const hamburger = document.getElementById("hamburger");
+    const navMenu = document.getElementById("nav-menu");
+    if (hamburger && navMenu) {
+        hamburger.addEventListener("click", () => {
+            navMenu.classList.toggle("active");
+        });
+    }
 });
 </script>
 <script src="/hamburger-menu.js"></script>

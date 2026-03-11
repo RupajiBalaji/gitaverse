@@ -48,8 +48,8 @@ function navigateToChapter(chapterNumber) {
 
     const url = `chapter.html?chapter=${chapterNumber}`;
 
-    // open in new tab
-    window.open(url, "_blank");
+    // open in same tab
+    window.location.href = url;
 
 }
 
@@ -180,4 +180,15 @@ document.addEventListener('DOMContentLoaded', () => {
     generateChapterCards();
     initParticles();
     animateParticles();
+
+    /* ===== MOBILE HAMBURGER MENU ===== */
+
+    const hamburger = document.getElementById("hamburger");
+    const navMenu = document.getElementById("nav-menu");
+
+    if (hamburger && navMenu) {
+        hamburger.addEventListener("click", () => {
+            navMenu.classList.toggle("active");
+        });
+    }
 });

@@ -1,4 +1,24 @@
 document.addEventListener('DOMContentLoaded', () => {
+    /* ===== NAVBAR SCROLL EFFECT ===== */
+    window.addEventListener("scroll", function() {
+        const nav = document.querySelector(".navbar");
+
+        if (window.scrollY > 50) {
+            nav.classList.add("scrolled");
+        } else {
+            nav.classList.remove("scrolled");
+        }
+    });
+
+    /* ===== HAMBURGER MENU ===== */
+    const hamburger = document.getElementById("hamburger");
+    const navMenu = document.getElementById("nav-menu");
+
+    if (hamburger && navMenu) {
+        hamburger.addEventListener("click", () => {
+            navMenu.classList.toggle("active");
+        });
+    }
     const form = document.getElementById('divineForm');
     const outputSection = document.getElementById('outputSection');
     const outputText = document.getElementById('outputText');
@@ -22,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Generate a divine message
         let data = null;
         try {
-                // const response = await fetch("http://127.0.0.1:8000/get-meaning", {
+                 //const response = await fetch("http://127.0.0.1:8000/get-meaning", {
                 const response = await fetch("https://gitaversebackend.onrender.com/get-meaning", {
                 method: "POST",
                 headers: {

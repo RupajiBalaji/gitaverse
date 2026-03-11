@@ -661,8 +661,20 @@
     <header class="navbar">
         <div class="container nav-content">
             <div class="logo">Bhagavad Gītā</div>
-            <div class="right-section">
+              <div class="hamburger" id="hamburger">
+               <i class="fas fa-bars"></i>
+              </div>
+            <div class="right-section" id = "nav-menu">
                 <nav>
+<<<<<<< HEAD
+                <a href="../index.html">Home</a>
+                <a href="../index.html#about">About</a>
+                <a href="chapters.html">Chapters</a>
+                <a href="../index.html#team">TeamXplore</a>
+                <a href="../index.html#contact">Contact</a>
+                </nav>
+                <a href="translation.html" class="glow-btn">Translate</a>
+=======
                 <a href="/index.html">Home</a>
                     <a href="/index.html#about">About</a>
                     <a href="/BV/chapters.html">Chapters</a>
@@ -670,6 +682,7 @@
                     <a href="/index.html#contact">Contact</a>
                 </nav>
                 <a href="/BV/translation.html" class="glow-btn">Translate</a>
+>>>>>>> a730a59683b46efb50d42d58eef5a548c395b90b
                 
             </div>
         </div>
@@ -830,8 +843,12 @@
             try {
                 // Try different possible paths
                 const possiblePaths = [
+<<<<<<< HEAD
+                `BhagavatGitaJsonFiles/${chapterFile}`
+=======
                 `/BV/BhagavatGitaJsonFiles/${chapterFile}`,
                 `/BhagavatGitaJsonFiles/${chapterFile}`
+>>>>>>> a730a59683b46efb50d42d58eef5a548c395b90b
                 ];
                 
 
@@ -923,7 +940,11 @@
                                 <a 
                                     class="translate-btn"
                                     target="_blank"
+<<<<<<< HEAD
+                                    href="translation.html?text=${encodeURIComponent(verse.sanskrit.text)}">
+=======
                                     href="/BV/translation.html?text=${encodeURIComponent(verse.sanskrit.text)}">
+>>>>>>> a730a59683b46efb50d42d58eef5a548c395b90b
                                     Translate More !!!
                                 </a>
                             </div>
@@ -1259,6 +1280,17 @@
             updateHero();
             initializePage();
             setupNavigation();
+
+            /* ===== HAMBURGER MENU ===== */
+
+    const hamburger = document.getElementById("hamburger");
+    const navMenu = document.getElementById("nav-menu");
+
+    if (hamburger && navMenu) {
+        hamburger.addEventListener("click", () => {
+            navMenu.classList.toggle("active");
+        });
+    }
         });
 
         // Navbar scroll effect
